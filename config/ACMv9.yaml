@@ -1,0 +1,67 @@
+data:
+  dir: './data'
+  batch_size: 1 
+  test_split: 0.2
+  max_node_num: 3800
+  max_feat_num: 105
+  max_sample_feat_num: 105
+  init: deg
+guidance:
+  x:
+    in_dim: 2200
+  adj:
+    in_dim: 400
+  hid_dim: 512
+  out_dim: 1
+sde:
+  x: 
+    type: VE
+    beta_min: 0.001
+    beta_max: 0.01
+    num_scales: 100
+  adj: 
+    type: VE
+    beta_min: 0.001
+    beta_max: 0.01
+    num_scales: 100
+
+model:
+  x: ScoreNetworkX_GMH
+  adj: ScoreNetworkA
+  conv: GCN
+  num_heads: 4
+  depth: 3
+  adim: 32
+  nhid: 64
+  num_layers: 3
+  num_linears: 3   
+  c_init: 2
+  c_hid: 16
+  c_final: 4
+train:
+  name: test
+  num_epochs: 5
+  save_interval: 5000
+  print_interval: 1000
+  reduce_mean: False
+  lr: 0.001
+  lr_schedule: True
+  ema: 0.999
+  weight_decay: 0.0001
+  grad_norm: 1.0
+  lr_decay: 0.999
+  eps: 1.0e-5
+
+sampler:
+  predictor: PC
+  corrector: Langevin
+  snr: 0.05
+  scale_eps: 0.7
+  n_steps: 1
+  subgraph_node_nums: 200
+sample:
+  use_ema: False
+  noise_removal: True
+  probability_flow: False
+  eps: 1.0e-4
+  seed: 11
