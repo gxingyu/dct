@@ -1,5 +1,5 @@
-# Graph Domain Adaptation via Diffusion Models
-This is the source code of "Graph Domain Adaptation via Diffusion Models"
+# Learning Structure-Semantic  Evolution Trajectories for Graph Domain Adaptation
+This is the source code of "Learning Structure-Semantic  Evolution Trajectories for Graph Domain Adaptation"
 
 # Abstract
 
